@@ -54,9 +54,9 @@ func main() {
 	time.Sleep(500 * time.Millisecond)
 
 	// Alternative way to reproduce the issue:
-	// - Remove the `t.cancel()` in `TraceQueryStart`
+	// - Remove the `t.cancel()` in `TraceQueryStart` below
 	// - Play with the sleep above until you find a value that causes the Release to happen after
-	//   the heartbeat has started but before the SQL command response is travelling.
+	//   the heartbeat has started but while the SQL command response is still travelling.
 	//   On my machine, a 200ms value works
 
 	// Release the lock and expect it to fail
